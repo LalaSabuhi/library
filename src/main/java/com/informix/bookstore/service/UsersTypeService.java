@@ -5,7 +5,7 @@ import com.informix.bookstore.repository.UsersTypeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsersTypeService {
@@ -14,7 +14,5 @@ public class UsersTypeService {
     public UsersTypeService(UsersTypeRepository usersTypeRepository){
         this.usersTypeRepository=usersTypeRepository;
     }
-    public List<UsersType> getAll(){
-        return usersTypeRepository.findAll();
-    }
+
 }
