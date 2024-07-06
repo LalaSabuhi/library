@@ -43,7 +43,7 @@ public class UsersController {
             return "register";
         }
         usersService.addNew(user);
-        return "index";
+        return "redirect:/dashboard/";
     }
     @GetMapping("/login")
     public String login() {
