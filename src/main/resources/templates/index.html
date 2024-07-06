@@ -65,51 +65,6 @@
 </div>
 <!-- Topbar End -->
 
-
-<div class="collapse navbar-collapse" id="navbarToggler">
-    <ul class="navbar-nav m-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-            <a sec:authorize="hasAuthority('borrower')" class="nav-link" th:href="@{/}"
-            ><i class="fas fa-search"></i>Search for Jobs</a
-            >
-        </li>
-        <li class="nav-item ">
-            <a sec:authorize="hasAuthority('borrower')" class="nav-link" th:href="@{/saved-jobs/}">
-                <i class="fa-solid fa-eye"></i>View Saved Jobs</a>
-        </li>
-        <li class="nav-item ">
-            <a sec:authorize="hasAuthority('borrower')" class="nav-link" th:href="@{/job-seeker-profile/}">
-                <i class="fa-solid fa-pencil"></i>Edit Profile</a>
-        </li>
-
-        <li class="nav-item ">
-            <a sec:authorize="hasAuthority('admin')" class="nav-link" th:href="@{/dashboard/add}"
-            ><i class="fa-solid fa-file-circle-plus"></i>Post New Job</a
-            >
-        </li>
-        <li class="nav-item active">
-            <a sec:authorize="hasAuthority('admin')" class="nav-link" th:href="@{/dashboard/}"
-            > <i class="fa-solid fa-eye"></i>View Your Jobs</a
-            >
-        </li>
-        <li class="nav-item ">
-            <a sec:authorize="hasAuthority('admin')" class="nav-link" th:href="@{/recruiter-profile/}"
-            > <i class="fa-solid fa-pencil"></i>Edit Account</a
-            >
-        </li>
-
-    </ul>
-    <label th:if="${user.firstName != null && user.lastName != null}"
-           th:text="${user.firstName+' '+user.lastName}"
-           class="nav-item nav-link px-2 me-3">
-    </label>
-
-    <label th:unless="${user.firstName != null && user.lastName != null}" th:text="${username}"
-           class="nav-item nav-link px-2 me-3"></label>
-
-    <button class="myBtn-light me-5" onclick="window.location.href='/logout'">Logout</button>
-</div>
-
 <!-- Navbar Start -->
 <div class="container-fluid">
     <div class="row border-top px-xl-5">
@@ -135,7 +90,7 @@
                 </div>
             </nav>
         </div>
-        <div class="col-lg-9">
+        <div  class="col-lg-9">
             <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
                 <a href="#" class="text-decoration-none d-block d-lg-none">
                     <h1 class="m-0"><span class="text-primary">E</span>COURSES</h1>
@@ -144,19 +99,56 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div class="navbar-nav py-0">
+                    <div  class="navbar-nav py-0">
+                        <a  sec:authorize="hasAuthority('borrower')" th:href="@{/}" class="nav-item nav-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                            </svg>
+                            Search for Books</a>
+                        <a  sec:authorize="hasAuthority('admin')" th:href="@{/}" class="nav-item nav-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
+                            </svg>
+                            Search for Books</a>
                         <a href="../../../../../online-courses-html-template/about.html" class="nav-item nav-link">About</a>
-                        <a sec:authorize="hasAuthority('borrower')"  th:href="@{/}"  class="nav-item nav-link">Search for Books</a>
-                        <a sec:authorize="hasAuthority('borrower')"  th:href="@{/}"  class="nav-item nav-link">Saved Books</a>
-                        <a sec:authorize="hasAuthority('borrower')"  th:href="@{/}" class="nav-item nav-link">Edit Profile</a>
+                        <a  sec:authorize="hasAuthority('borrower')" th:href="@{/}" class="nav-item nav-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                            </svg>
+                            Edit Your Profile</a>
+                        <a  sec:authorize="hasAuthority('admin')" th:href="@{/}" class="nav-item nav-link">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                            </svg>
+                            Edit Your Profile</a>
                     </div>
-                    <a class="btn btn-primary py-2 px-4 ml-auto d-none d-lg-block" href="">Join Now</a>
+                    <div  class="navbar-nav py-0 d-flex align-items-center">
+                        <label th:if="${user.firstName != null && user.lastName != null}"
+                               th:text="${user.firstName + ' ' + user.lastName}"
+                               class="nav-item nav-link px-2 me-3 mb-0">
+                        </label>
+                        <label  th:unless="${user.firstName != null && user.lastName != null}"
+                               th:text="${username}"
+                               class="nav-item nav-link px-2 me-3 mb-0">
+                        </label>
+                        <a sec:authorize="hasAuthority('borrower')" th:href="@{/}" class="nav-item nav-link me-3 ">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
+                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
+                            </svg>
+                        </a>
+                        <a th:href= "@{'/'}" class="btn btn-primary py-2 px-4 ms-3 d-none d-lg-block" >Logout</a>
+                    </div>
                 </div>
             </nav>
         </div>
+
+
     </div>
 </div>
 <!-- Navbar End -->
+
 
 
 <!-- Carousel Start -->
@@ -433,57 +425,6 @@
     </div>
     <!-- Courses End -->
 
-
-    <!-- Registration Start -->
-    <div class="container-fluid bg-registration py-5" style="margin: 90px 0;">
-        <div class="container py-5">
-            <div class="row align-items-center">
-                <div class="col-lg-7 mb-5 mb-lg-0">
-                    <div class="mb-4">
-                        <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Need Any Courses</h5>
-                        <h1 class="text-white">30% Off For New Students</h1>
-                    </div>
-                    <p class="text-white">Invidunt lorem justo sanctus clita. Erat lorem labore ea, justo dolor lorem ipsum ut sed eos,
-                        ipsum et dolor kasd sit ea justo. Erat justo sed sed diam. Ea et erat ut sed diam sea ipsum est
-                        dolor</p>
-                    <ul class="list-inline text-white m-0">
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Labore eos amet dolor amet diam</li>
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Etsea et sit dolor amet ipsum</li>
-                        <li class="py-2"><i class="fa fa-check text-primary mr-3"></i>Diam dolor diam elitripsum vero.</li>
-                    </ul>
-                </div>
-                <div class="col-lg-5">
-                    <div class="card border-0">
-                        <div class="card-header bg-light text-center p-4">
-                            <h1 class="m-0">Sign Up Now</h1>
-                        </div>
-                        <div class="card-body rounded-bottom bg-primary p-5">
-                            <form>
-                                <div class="form-group">
-                                    <input type="text" class="form-control border-0 p-4" placeholder="Your name" required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control border-0 p-4" placeholder="Your email" required="required" />
-                                </div>
-                                <div class="form-group">
-                                    <select class="custom-select border-0 px-4" style="height: 47px;">
-                                        <option selected>Select a course</option>
-                                        <option value="1">Course 1</option>
-                                        <option value="2">Course 1</option>
-                                        <option value="3">Course 1</option>
-                                    </select>
-                                </div>
-                                <div>
-                                    <button class="btn btn-dark btn-block border-0 py-3" type="submit">Sign Up Now</button>
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Registration End -->
 
 
     <!-- Team Start -->
