@@ -46,6 +46,10 @@ public class BorrowerProfile {
         this.profilePhoto = profilePhoto;
     }
 
+    public BorrowerProfile(Users savedUser) {
+        this.userId = savedUser;
+    }
+
     public int getUserAccountId() {
         return userAccountId;
     }

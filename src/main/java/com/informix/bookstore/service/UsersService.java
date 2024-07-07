@@ -35,14 +35,20 @@ public class UsersService {
         this.borrowerProfileRepository = borrowerProfileRepository;
         this.adminProfileRepository = adminProfileRepository;
     }
-
-
-
     public Users addNew(Users user) {
         user.setActive(true);
         user.setRegistrationDate(new Date(System.currentTimeMillis()));
         user.setUserTypeId(usersTypeRepository.getReferenceById(2));
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        Users savedUser = usersRepository.save(user);
+        int userTypeId = user.getUserTypeId().getUserTypeId();
+
+        if (userTypeId == 2) {
+            borrowerProfileRepository.save(new BorrowerProfile(savedUser));
+        }
+        else {
+            adminProfileRepository.save(new AdminProfile(savedUser));
+        }
         return usersRepository.save(user);
     }
     public Optional<Users> getUserByEmail(String email){

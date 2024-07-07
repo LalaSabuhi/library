@@ -28,7 +28,7 @@ public class BookPostActivityController {
 
         model.addAttribute("user", currentUserProfile);
 
-        return "index";
+        return "dashboard";
 
 
     }

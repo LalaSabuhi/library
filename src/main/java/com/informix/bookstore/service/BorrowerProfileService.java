@@ -2,6 +2,7 @@ package com.informix.bookstore.service;
 
 import com.informix.bookstore.entity.BorrowerProfile;
 import com.informix.bookstore.repository.BorrowerProfileRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -9,7 +10,7 @@ import java.util.Optional;
 @Service
 public class BorrowerProfileService {
     private final BorrowerProfileRepository borrowerProfileRepository;
-
+    @Autowired
     public BorrowerProfileService(BorrowerProfileRepository borrowerProfileRepository) {
         this.borrowerProfileRepository = borrowerProfileRepository;
     }

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-
 <head>
     <meta charset="utf-8">
     <title th:text="${pageTitle}">ECOURSES - Online Courses HTML Template</title>
@@ -23,15 +22,36 @@
 
     <!-- Customized Bootstrap Stylesheet -->
     <link th:href="@{/css/style.css}" rel="stylesheet">
+    <style>
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        }
+        .heading_font {
+            font-family: 'Poppins', sans-serif;
+        }
+        .form-control {
+            border-radius: 5px;
+        }
+        .base_button {
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .base_button:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
-
 <body>
 <!-- Topbar Start -->
 <div class="container-fluid d-none d-lg-block">
     <div class="row align-items-center py-4 px-xl-5">
         <div class="col-lg-3">
             <a href="#" class="text-decoration-none">
-                <h1 class="m-0"><span class="text-primary">E</span>COURSES</h1>
+                <h1 class="m-0"><span class="text-primary">BOOK</span>STORE</h1>
             </a>
         </div>
         <div class="col-lg-3 text-right">
@@ -64,157 +84,151 @@
     </div>
 </div>
 <!-- Topbar End -->
-
-<!-- Navbar Start -->
-
-<!-- Navbar End -->
-<div class="col-7">
-    <div class="myForm">
-        <form
-                th:action="@{/borrower-profile/addNew}"
-                th:object="${profile}"
-                method="post"
-                enctype="multipart/form-data"
-        >
-            <div class="row" style="margin-right:0; margin-left:0;">
-                <div class="col-md-12">
-                    <div class="d-flex justify-content-center pt-3">
-                        <h1 class="heading_font font-weight-bold">Borrower</h1>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <div>
-                        <h2 class="heading_font d-flex justify-content-center">
-                            Set up your Profile
-                        </h2>
-                    </div>
-                </div>
-                <div class="col-md-12">
-                    <label class="heading_font font_sub_heading_color">Name</label>
-                    <div class="row">
-                        <div class="col-md-6 pr-1">
-                            <input
-
-                                    id="user_account_id"
-                                    th:field="*{userAccountId}"
-                                    name="userAccountId"
-                                    type="text"
-                                    hidden
-                            />
-                            <input
-                                    placeholder="First Name"
-                                    id="firstName"
-                                    th:field="*{firstName}"
-                                    name="firstName"
-                                    type="text"
-                                    class="form-control"
-                            />
-                        </div>
-                        <div class="col-md-6 pl-1">
-                            <input
-                                    placeholder="Last Name"
-                                    id="lastName"
-                                    name="lastName"
-                                    th:field="*{lastName}"
-                                    type="text"
-                                    class="form-control"
-                            />
-                        </div>
-                    </div>
-                    <div class="row ">
-                        <div class="col-md-4 pr-1">
-                            <input
-                                    placeholder="City"
-                                    name="city"
-                                    th:field="*{city}"
-                                    type="text"
-                                    class="form-control"
-                            />
-                        </div>
-                        <div class="col-md-4 pr-1">
-                            <input
-                                    placeholder="Phone"
-                                    name="phone"
-                                    th:field="*{phone}"
-                                    type="text"
-                                    class="form-control"
-                            />
-                        </div>
-                        <div class="col-md-4 px-1">
-                            <input
-                                    placeholder="State"
-                                    name="state"
-                                    type="text"
-                                    th:field="*{state}"
-                                    class="form-control"
-                            />
-                        </div>
-                        <div class="col-md-4 pl-1">
-                            <input
-                                    placeholder="Country"
-                                    name="country"
-                                    th:field="*{country}"
-                                    type="text"
-                                    class="form-control"
-                            />
-                        </div>
-                    </div>
-
-
-                    <div class="row mt-2">
-                        <div class="col-md-5 me-5" sec:authorize="hasAuthority('borrower')">
-                            <label class="heading_font font_sub_heading_color">
-                                Profile Photo</label
-                            >
-                            <input
-                                    type="file"
-                                    name="image"
-                                    class="form-control"
-                                    accept="image/png, image/jpeg"
-                            />
-                            <input type="text" name="profilePhoto" th:field="*{profilePhoto}" class="form-control"
-                                   hidden/>
-
-                        </div>
-                        <div class="col-md-5 me-5">
-                            <label class="heading_font font_sub_heading_color">
-                                Resume</label
-                            >
-                            <input
-                                    sec:authorize="hasAuthority('borrower')"
-                                    type="file"
-                                    name="pdf"
-                                    class="form-control"
-                                    required="true"
-                                    accept="application/pdf"
-                            />
-                            <input type="text" name="resume" th:field="*{idCardPdf}" class="form-control" hidden/>
-                            <a sec:authorize="hasAuthority('borrower')"
-                               th:href="@{|/borrower-profile/downloadResume?fileName=${profile.idCardPdf}&&userID=${profile.userAccountId}|}">Download
-                                IdCartPdf</a>
-                        </div>
-                    </div>
-
-                    <div class="row mt-3 col d-flex justify-content-center"
-                         sec:authorize="hasAuthority('borrower')">
-                        <div class="text-right">
-                            <button
-                                    type="submit"
-                                    id="submit2"
-                                    name="submit"
-                                    class="btn btn-primary base_button px-4 py-2"
-                            >
-                                Save
-                            </button>
-                        </div>
+<!-- Carousel Start -->
+<div class="container-fluid p-0 pb-5 mb-5">
+    <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" style="max-height: 200px;">
+                <img class="position-relative w-100" th:src="@{/img/carousel-1.jpg}" style="min-height: 300px; object-fit: cover;">
+                <div class="carousel-caption d-flex align-items-center justify-content-center">
+                    <div class="p-1" style="width: 100%; max-width: 900px;">
+                        <h1 class="display-3 text-white mb-md-3">Book Store</h1>
+                        <a th:href="@{'/'}" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
                     </div>
                 </div>
             </div>
-        </form>
+        </div>
     </div>
 </div>
+<!-- Carousel End -->
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-8 col-md-10">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <form
+                            th:action="@{/borrower-profile/addNew}"
+                            th:object="${profile}"
+                            method="post"
+                            enctype="multipart/form-data"
+                    >
+                        <div class="text-center mb-4">
+                            <h1 class="h3 mb-3 font-weight-normal">Borrower</h1>
+                            <h2 class="h5">Set up your Profile</h2>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Name</label>
+                            <div class="col-sm-5">
+                                <input
+                                        id="user_account_id"
+                                        th:field="*{userAccountId}"
+                                        name="userAccountId"
+                                        type="text"
+                                        hidden
+                                />
+                                <input
+                                        placeholder="First Name"
+                                        id="firstName"
+                                        th:field="*{firstName}"
+                                        name="firstName"
+                                        type="text"
+                                        class="form-control"
+                                />
+                            </div>
+                            <div class="col-sm-5">
+                                <input
+                                        placeholder="Last Name"
+                                        id="lastName"
+                                        name="lastName"
+                                        th:field="*{lastName}"
+                                        type="text"
+                                        class="form-control"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-md-4">
+                                <input
+                                        placeholder="City"
+                                        name="city"
+                                        th:field="*{city}"
+                                        type="text"
+                                        class="form-control"
+                                />
+                            </div>
+                            <div class="col-md-4">
+                                <input
+                                        placeholder="State"
+                                        name="state"
+                                        type="text"
+                                        th:field="*{state}"
+                                        class="form-control"
+                                />
+                            </div>
+                            <div class="col-md-4">
+                                <input
+                                        placeholder="Country"
+                                        name="country"
+                                        th:field="*{country}"
+                                        type="text"
+                                        class="form-control"
+                                />
+                            </div>
+                            <div class="col-md-4 mt-3">
+                                <input
+                                        placeholder="Phone"
+                                        name="phone"
+                                        th:field="*{phone}"
+                                        type="text"
+                                        class="form-control"
+                                />
+                            </div>
+                        </div>
+                        <div class="form-group row mt-3">
+                            <div class="col-md-6">
+                                <label>Profile Photo</label>
+                                <input
+                                        type="file"
+                                        name="image"
+                                        class="form-control"
+                                        accept="image/png, image/jpeg"
+                                />
+                                <input type="text" name="profilePhoto" th:field="*{profilePhoto}" class="form-control" hidden/>
+                            </div>
+                            <div class="col-md-6">
+                                <label>Id Cart Pdf Copy</label>
+                                <input
+                                        sec:authorize="hasAuthority('borrower')"
+                                        type="file"
+                                        name="pdf"
+                                        class="form-control"
+                                        required="true"
+                                        accept="application/pdf"
+                                />
+                                <input type="text" name="resume" th:field="*{idCardPdf}" class="form-control" hidden/>
+                                <a sec:authorize="hasAuthority('admin')"
+                                   th:href="@{|/borrower-profile/downloadResume?fileName=${profile.resume}&&userID=${profile.userAccountId}|}">Download Resume</a>
+                            </div>
+                        </div>
+                        <div class="form-group row mt-4">
+                            <div class="col text-center">
+                                <button
+                                        type="submit"
+                                        id="submit2"
+                                        name="submit"
+                                        class="btn btn-primary px-4 py-2"
+                                >
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<div sec:authorize="hasAuthority('Recruiter')">
+
 
 </div>
 </body>

@@ -31,7 +31,7 @@
     <div class="row align-items-center py-4 px-xl-5">
         <div class="col-lg-3">
             <a href="#" class="text-decoration-none">
-                <h1 class="m-0"><span class="text-primary">E</span>COURSES</h1>
+                <h1 class="m-0"><span class="text-primary">BOOK</span>STORE</h1>
             </a>
         </div>
         <div class="col-lg-3 text-right">
@@ -90,59 +90,6 @@
                 </div>
             </nav>
         </div>
-        <div  class="col-lg-9">
-            <nav class="navbar navbar-expand-lg bg-light navbar-light py-3 py-lg-0 px-0">
-                <a href="#" class="text-decoration-none d-block d-lg-none">
-                    <h1 class="m-0"><span class="text-primary">E</span>COURSES</h1>
-                </a>
-                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <div  class="navbar-nav py-0">
-                        <a  sec:authorize="hasAuthority('borrower')" th:href="@{/}" class="nav-item nav-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                            </svg>
-                            Search for Books</a>
-                        <a  sec:authorize="hasAuthority('admin')" th:href="@{/}" class="nav-item nav-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
-                                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"/>
-                            </svg>
-                            Search for Books</a>
-                        <a href="../../../../../online-courses-html-template/about.html" class="nav-item nav-link">About</a>
-                        <a  sec:authorize="hasAuthority('borrower')" th:href="@{/borrower-profile/}" class="nav-item nav-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                            </svg>
-                            Edit Your Profile</a>
-                        <a  sec:authorize="hasAuthority('admin')" th:href="@{/borrower-profile/}" class="nav-item nav-link">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
-                                <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
-                                <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
-                            </svg>
-                            Edit Your Profile</a>
-                    </div>
-                    <div  class="navbar-nav py-0 d-flex align-items-center">
-                        <label th:if="${user.firstName != null && user.lastName != null}"
-                               th:text="${user.firstName + ' ' + user.lastName}"
-                               class="nav-item nav-link px-2 me-3 mb-0">
-                        </label>
-                        <label  th:unless="${user.firstName != null && user.lastName != null}"
-                               th:text="${username}"
-                               class="nav-item nav-link px-2 me-3 mb-0">
-                        </label>
-                        <a sec:authorize="hasAuthority('borrower')" th:href="@{/}" class="nav-item nav-link me-3 ">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor" class="bi bi-cart" viewBox="0 0 16 16">
-                                <path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5M3.102 4l1.313 7h8.17l1.313-7zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4m7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4m-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2m7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2"/>
-                            </svg>
-                        </a>
-                        <a th:href= "@{'/'}" class="btn btn-primary py-2 px-4 ms-3 d-none d-lg-block" >Logout</a>
-                    </div>
-                </div>
-            </nav>
-        </div>
     </div>
 </div>
 <!-- Navbar End -->
@@ -152,39 +99,13 @@
 <!-- Carousel Start -->
 <div class="container-fluid p-0 pb-5 mb-5">
     <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
-        <ol class="carousel-indicators">
-            <li data-target="#header-carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#header-carousel" data-slide-to="1"></li>
-            <li data-target="#header-carousel" data-slide-to="2"></li>
-        </ol>
         <div class="carousel-inner">
-            <div class="carousel-item active" style="min-height: 300px;">
+            <div class="carousel-item active" style="max-height: 200px;">
                 <img class="position-relative w-100" th:src="@{/img/carousel-1.jpg}" style="min-height: 300px; object-fit: cover;">
                 <div class="carousel-caption d-flex align-items-center justify-content-center">
-                    <div class="p-5" style="width: 100%; max-width: 900px;">
-                        <h5 class="text-white text-uppercase mb-md-3">Best Online Courses</h5>
-                        <h1 class="display-3 text-white mb-md-4">Best Education From Your Home</h1>
-                        <a href="#" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item" style="min-height: 300px;">
-                <img class="position-relative w-100" th:src="@{/img/carousel-2.jpg}" style="min-height: 300px; object-fit: cover;">
-                <div class="carousel-caption d-flex align-items-center justify-content-center">
-                    <div class="p-5" style="width: 100%; max-width: 900px;">
-                        <h5 class="text-white text-uppercase mb-md-3">Best Online Courses</h5>
-                        <h1 class="display-3 text-white mb-md-4">Best Online Learning Platform</h1>
-                        <a href="#" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item" style="min-height: 300px;">
-                <img class="position-relative w-100" th:src="@{/img/carousel-3.jpg}" style="min-height: 300px; object-fit: cover;">
-                <div class="carousel-caption d-flex align-items-center justify-content-center">
-                    <div class="p-5" style="width: 100%; max-width: 900px;">
-                        <h5 class="text-white text-uppercase mb-md-3">Best Online Courses</h5>
-                        <h1 class="display-3 text-white mb-md-4">New Way To Learn From Home</h1>
-                        <a href="#" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
+                    <div class="p-1" style="width: 100%; max-width: 900px;">
+                        <h1 class="display-3 text-white mb-md-3">Book Store</h1>
+                        <a th:href="@{'/'}" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
                     </div>
                 </div>
             </div>

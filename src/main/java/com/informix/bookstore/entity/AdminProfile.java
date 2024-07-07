@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 @Table(name = "admin_profile")
 public class AdminProfile {
     @Id
-    private int userAccountId;
+    private Integer userAccountId;
 
     @OneToOne
     @JoinColumn(name = "user_account_id")
@@ -35,6 +35,10 @@ public class AdminProfile {
         this.country = country;
         this.phone = phone;
         this.profilePhoto = profilePhoto;
+    }
+
+    public AdminProfile(Users savedUser) {
+        this.userId =savedUser;
     }
 
     public int getUserAccountId() {
@@ -107,6 +111,11 @@ public class AdminProfile {
 
     public void setProfilePhoto(String profilePhoto) {
         this.profilePhoto = profilePhoto;
+    }
+    @Transient
+    public String getPhotosImagePath() {
+        if (profilePhoto == null || userAccountId == null) return null;
+        return "/photos/admin/" + userAccountId + "/" + profilePhoto;
     }
 
     @Override

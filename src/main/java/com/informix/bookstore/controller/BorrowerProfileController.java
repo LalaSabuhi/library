@@ -37,20 +37,22 @@ public class BorrowerProfileController {
     }
 
     @GetMapping("/")
-    public String borrowerProfile(Model model){
+    public String borrowerProfile(Model model) {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        if(!(authentication instanceof AnonymousAuthenticationToken)){
+
+        if (!(authentication instanceof AnonymousAuthenticationToken)) {
             String currentUsername = authentication.getName();
-            Users users = usersRepository.findByEmail(currentUsername).orElseThrow(() -> new UsernameNotFoundException("could not found user"));
+            Users users = usersRepository.findByEmail(currentUsername).orElseThrow(() -> new UsernameNotFoundException("Could not " + "found user"));
             Optional<BorrowerProfile> borrowerProfile = borrowerProfileService.getOne(users.getUserId());
-            if(!borrowerProfile.isEmpty()){
-                model.addAttribute("profile" , borrowerProfile.get());
-            }
+
+            if (!borrowerProfile.isEmpty())
+                model.addAttribute("profile", borrowerProfile.get());
 
         }
-        return "borrower_profile";
 
+        return "borrower_profile";
     }
+
     @PostMapping("/addNew")
     public String addNew(BorrowerProfile borrowerProfile,
                          @RequestParam("image")MultipartFile image,
@@ -58,8 +60,8 @@ public class BorrowerProfileController {
                          Model model){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         if(!(authentication instanceof AnonymousAuthenticationToken)){
-            String curretUsername = authentication.getName();
-            Users users = usersRepository.findByEmail(curretUsername).orElseThrow(() -> new UsernameNotFoundException("could not found user"));
+            String currentUsername = authentication.getName();
+            Users users = usersRepository.findByEmail(currentUsername).orElseThrow(() -> new UsernameNotFoundException("could not found user"));
             borrowerProfile.setUserId(users);
             borrowerProfile.setUserAccountId(users.getUserId());
 

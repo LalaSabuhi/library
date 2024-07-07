@@ -1,103 +1,146 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org">
-  <head>
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="all"
-      th:href="@{/css/style.css}"
-    />
-    <link
-      th:rel="stylesheet"
-      th:href="@{/webjars/bootstrap/css/bootstrap.min.css} "
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="all"
-      th:href="@{/css/font-awesome.min.css}"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="all"
-      th:href="@{/css/styles.css}"
-    />
-    <meta charset="ISO-8859-1" />
-    <title>Login</title>
-  </head>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="utf-8">
+  <title th:text="${pageTitle}">ECOURSES - Online Courses HTML Template</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="Free HTML Templates" name="keywords">
+  <meta content="Free HTML Templates" name="description">
+
+  <!-- Favicon -->
+  <link th:href="@{/img/favicon.ico}" rel="icon">
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+  <!-- Libraries Stylesheet -->
+  <link th:href="@{/lib/owlcarousel/assets/owl.carousel.min.css}" rel="stylesheet">
+
+  <!-- Customized Bootstrap Stylesheet -->
+  <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
 
   <body>
 
-    <div class="row" style="margin-right:0">
-      <div class="col-md-6">
-        <div class="coffee_mug_background">
-          <div class="logo_left mt-3 pt-4 ms-5 pl-5">
-            <h2 class="logo">hotdevjobs <span class="logo_com">.com</span></h2>
+  <!-- Topbar Start -->
+  <div class="container-fluid d-none d-lg-block">
+    <div class="row align-items-center py-4 px-xl-5">
+      <div class="col-lg-3">
+        <a href="#" class="text-decoration-none">
+          <h1 class="m-0"><span class="text-primary">BOOK</span>STORE</h1>
+        </a>
+      </div>
+      <div class="col-lg-3 text-right">
+        <div class="d-inline-flex align-items-center">
+          <i class="fa fa-2x fa-map-marker-alt text-primary mr-3"></i>
+          <div class="text-left">
+            <h6 class="font-weight-semi-bold mb-1">Our Office</h6>
+            <small>123 Street, New York, USA</small>
           </div>
         </div>
       </div>
-      <div class="col-md-6">
-        <div class="myForm" style="align-items:center">
+      <div class="col-lg-3 text-right">
+        <div class="d-inline-flex align-items-center">
+          <i class="fa fa-2x fa-envelope text-primary mr-3"></i>
+          <div class="text-left">
+            <h6 class="font-weight-semi-bold mb-1">Email Us</h6>
+            <small>info@example.com</small>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-3 text-right">
+        <div class="d-inline-flex align-items-center">
+          <i class="fa fa-2x fa-phone text-primary mr-3"></i>
+          <div class="text-left">
+            <h6 class="font-weight-semi-bold mb-1">Call Us</h6>
+            <small>+012 345 6789</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Topbar End -->
+  <!-- Carousel Start -->
+  <div class="container-fluid p-0 pb-5 mb-5">
+    <div id="header-carousel" class="carousel slide carousel-fade" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active" style="max-height: 200px;">
+          <img class="position-relative w-100" th:src="@{/img/carousel-1.jpg}" style="min-height: 300px; object-fit: cover;">
+          <div class="carousel-caption d-flex align-items-center justify-content-center">
+            <div class="p-1" style="width: 100%; max-width: 900px;">
+              <h1 class="display-3 text-white mb-md-3">Book Store</h1>
+              <a th:href="@{'/'}" class="btn btn-primary py-md-2 px-md-4 font-weight-semi-bold mt-2">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Carousel End -->
+
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 mx-auto">
+        <div class="myForm mt-5">
           <form th:action="@{/login}" th:object="${user}" method="post">
-            <h1 class="text-center bold font-weight-bold mb-4">Login</h1>
+            <h1 class="text-center font-weight-bold mb-4">Login</h1>
             <div class="form-group">
               <input
-                placeholder="Email"
-                name="username"
-                field="{email}"
-                type="email"
-                class="form-control"
-                required
+                      placeholder="Email"
+                      name="username"
+                      field="{email}"
+                      type="email"
+                      class="form-control"
+                      required
               />
             </div>
             <div class="form-group">
               <input
-                placeholder="Password"
-                name="password"
-                field="{password}"
-                type="password"
-                class="form-control"
-                required
+                      placeholder="Password"
+                      name="password"
+                      field="{password}"
+                      type="password"
+                      class="form-control"
+                      required
               />
             </div>
             <div class="clearfix mb-4">
-              <label class="float-left form-check-label"
-                ><input type="checkbox" /> Remember me</label
-              >
-              <a href="#" class="color-text float-right">Forgot Password?</a>
+              <label class="float-left form-check-label">
+                <input type="checkbox" /> Remember me
+              </label>
+              <a href="#" class="float-right text-muted">Forgot Password?</a>
             </div>
             <div class="form-group">
-              <button type="submit" class="myBtn">Log in</button>
+              <button type="submit" class="btn btn-primary btn-block">Log in</button>
             </div>
-
             <p class="text-center">
               Are you a new User?
-              <a
-                class="color-text"
-                href="#"
-                th:href="@{/register}"
-              >
-                Register Now</a
-              >
+              <a href="#" class="text-muted" th:href="@{/register}">Register Now</a>
             </p>
           </form>
         </div>
       </div>
     </div>
+  </div>
+
+  <!-- JavaScript Libraries -->
+  <script th:src="@{https://code.jquery.com/jquery-3.4.1.min.js}"></script>
+  <script th:src="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js}"></script>
+  <script th:src="@{/lib/easing/easing.min.js}"></script>
+  <script th:src="@{/lib/owlcarousel/owl.carousel.min.js}"></script>
+
+  <!-- Contact Javascript File -->
+  <script th:src="@{/mail/jqBootstrapValidation.min.js}"></script>
+  <script th:src="@{/mail/contact.js}"></script>
+
+  <!-- Template Javascript -->
+  <script th:src="@{/js/main.js}"></script>
+
   </body>
-  <script
-    type="text/javascript"
-    th:src="@{/webjars/jquery/jquery.min.js}"
-  ></script>
-  <script
-    type="text/javascript"
-    th:src="@{/webjars/popper.js/umd/popper.min.js}"
-  ></script>
-  <script
-    type="text/javascript"
-    th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"
-  ></script>
-  <script type="text/javascript" th:src="@{/js/main.js}"></script>
+
 </html>

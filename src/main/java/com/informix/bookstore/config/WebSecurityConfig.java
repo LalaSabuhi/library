@@ -38,22 +38,24 @@ public class WebSecurityConfig {
             "/fonts**", "/favicon.ico", "/resources/**", "/error"};
 
     @Bean
-    protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception{
+    protected SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authenticationProvider(authenticationProvider());
 
         http.authorizeHttpRequests(auth -> {
             auth.requestMatchers(publicUrl).permitAll();
+            auth.requestMatchers("/admin/**").hasAuthority("admin"); // Yalnız admin istifadəçiləri üçün
             auth.anyRequest().authenticated();
         });
         http.formLogin(form -> form.loginPage("/login").permitAll()
-                .successHandler(customAuthenticationSuccessHandler))
-                .logout(logout-> {
+                        .successHandler(customAuthenticationSuccessHandler))
+                .logout(logout -> {
                     logout.logoutUrl("/logout");
                     logout.logoutSuccessUrl("/");
                 }).cors(Customizer.withDefaults())
-                .csrf(csrf->csrf.disable());
+                .csrf(csrf -> csrf.disable());
         return http.build();
     }
+
     @Bean
     public AuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider authenticationProvider = new DaoAuthenticationProvider();
