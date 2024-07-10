@@ -142,6 +142,11 @@ public class BorrowerProfile {
         if (profilePhoto == null || userAccountId == null) return null;
         return "/photos/borrower/" + userAccountId + "/" + profilePhoto;
     }
+    @Transient
+    public String getIdCardPath() {
+        if (idCardPdf == null || userAccountId == null) return null;
+        return "/photos/borrower/" + userAccountId + "/" + idCardPdf;
+    }
 
 
     @Override

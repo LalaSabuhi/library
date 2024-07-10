@@ -33,10 +33,8 @@ public class AdminController {
     }
     @GetMapping("/borrowers/delete/{id}")
     public String deleteBorrower(@PathVariable("id") int id, RedirectAttributes redirectAttributes) {
-
-            borrowerProfileRepository.deleteById(id);
-
-
-        return "redirect:/borrowers";
+        borrowerProfileRepository.deleteById(id);
+        redirectAttributes.addFlashAttribute("message", "Borrower deleted successfully.");
+        return "redirect:/admin/borrowers";
     }
 }
