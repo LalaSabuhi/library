@@ -20,6 +20,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @Controller
 @RequestMapping("/admin")
@@ -76,7 +77,25 @@ public class AdminController {
         }
         bookPostActivity.setPostedDate(new Date());
         model.addAttribute("bookPostActivity", bookPostActivity);
+
+        String imageName = "";
+
+        if (!Objects.equals(image.getOriginalFilename(), "")) {
+            imageName = StringUtils.cleanPath(Objects.requireNonNull(image.getOriginalFilename()));
+            bookPostActivity.setBookImage(imageName);
+        }
+
         BookPostActivity saved = bookPostActivityService.addNew(bookPostActivity);
+
+        try {
+            String uploadDir = "photos/book/" + bookPostActivity.getBookPostId();
+            if (!Objects.equals(image.getOriginalFilename(), "")) {
+                FileUploadUtil.saveFile(uploadDir, imageName, image);
+            }
+        }
+        catch (IOException ex) {
+            throw new RuntimeException(ex);
+        }
         return "redirect:/admin/books";
     }
 
