@@ -15,4 +15,8 @@ public class BookPostActivityService {
     public BookPostActivity addNew(BookPostActivity bookPostActivity){
         return bookPostActivityRepository.save(bookPostActivity);
     }
+
+    public BookPostActivity getOne(int id) {
+        return bookPostActivityRepository.findById(id).orElseThrow(()->new RuntimeException("Job not found"));
+    }
 }

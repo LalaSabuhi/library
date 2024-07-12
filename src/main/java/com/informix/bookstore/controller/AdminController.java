@@ -99,4 +99,13 @@ public class AdminController {
         return "redirect:/admin/books";
     }
 
+    @GetMapping("/edit/{id}")
+    public String editJob(@PathVariable("id") int id, Model model) {
+
+        BookPostActivity bookPostActivity = bookPostActivityService.getOne(id);
+        model.addAttribute("bookPostActivity", bookPostActivity);
+        model.addAttribute("user", usersService.getCurrentUserProfile());
+        return "add-books";
+    }
+
 }
