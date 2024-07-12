@@ -11,63 +11,60 @@
 </head>
 
 <body>
-<div style="display: flex">
-    <div class="col-md-5 coffee_mug_background">
-        <div class="logo_left mt-3 pt-4 ms-5 pl-5">
-            <h2 class="logo" style="color: white">
-                hotdevjobs <span class="logo_com">.com</span>
-            </h2>
+<div class="col-md-7 container myForm">
+    <form id="book-main-form" th:action="@{/admin/addNew}" th:object="${bookPostActivity}" method="post" class="book-add-form" enctype="multipart/form-data">
+        <input hidden type="text" th:field="*{bookPostId}">
+        <input hidden type="text" th:field="*{postedById.userId}">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="d-flex justify-content-center pt-3">
+                    <h1 class="heading_font font-weight-bold">Post New Book</h1>
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="col-md-7 container myForm">
-        <form id="book-main-form" th:action="@{/admin/addNew}" th:object="${bookPostActivity}" method="post" class="book-add-form">
-            <input hidden type="text" th:field="*{bookPostId}">
-            <input hidden type="text" th:field="*{postedById.userId}">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="d-flex justify-content-center pt-3">
-                        <h1 class="heading_font font-weight-bold">Post New Book</h1>
-                    </div>
-                </div>
+        <label class="heading_font font_sub_heading_color">Book Details</label>
+        <div class="row">
+            <div class="col-lg-12 form-group">
+                <input id="title" type="text" th:field="*{bookTitle}" class="form-control" placeholder="Book Title">
+                <div th:if="${#fields.hasErrors('bookTitle')}" th:errors="*{bookTitle}" class="alert alert-danger"></div>
             </div>
-            <label class="heading_font font_sub_heading_color">Book Details</label>
-            <div class="row">
-                <div class="col-lg-12 form-group">
-                    <input id="title" type="text" th:field="*{bookTitle}" class="form-control" placeholder="Book Title">
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 form-group">
+                <select id="type" th:field="*{genre}" class="form-control">
+                    <option value="">Book Genre</option>
+                    <option th:value="Fiction">Fiction</option>
+                    <option th:value="Non-Fiction">Non-Fiction</option>
+                    <option th:value="Science-Fiction">Science-Fiction</option>
+                    <option th:value="Fantasy">Fantasy</option>
+                    <option th:value="Mystery">Mystery</option>
+                </select>
+                <div th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}" class="alert alert-danger"></div>
             </div>
-            <div class="row">
-                <div class="col-md-4 form-group">
-                    <select id="type" th:field="*{genre}" class="form-control">
-                        <option value="" >Book Genre</option>
-                        <option th:value="Fiction" >Fiction</option>
-                        <option th:value="Non-Fiction" >Non-Fiction</option>
-                        <option th:value="Science-Fiction" >Science-Fiction</option>
-                        <option th:value="Fantasy" >Fantasy</option>
-                        <option th:value="Mystery" >Mystery</option>
-                    </select>
-                </div>
-                <div class="col-md-4 form-group">
-                    <input id="price" type="text" th:field="*{price}" class="form-control" placeholder="Price">
-                </div>
-                <div class="col-md-4 form-group">
-                    <input id="bookImage" type="file" th:field="*{bookImage}" class="form-control">
-                </div>
+            <div class="col-md-4 form-group">
+                <input id="price" type="text" th:field="*{price}" class="form-control" placeholder="Price">
+                <div th:if="${#fields.hasErrors('price')}" th:errors="*{price}" class="alert alert-danger"></div>
             </div>
-            <div class="row">
-                <div class="col-md-12 form-group">
-                    <label class="mt-2 heading_font font_sub_heading_color">Description</label>
-                    <textarea type="text" rows="4" id="content" placeholder="Content" class="form-control" th:field="*{descriptionOfBook}" autocomplete="off"></textarea>
-                </div>
+            <div class="col-md-4 form-group">
+                <input id="bookImage" type="file" th:field="*{bookImage}" class="form-control">
+                <div th:if="${#fields.hasErrors('bookImage')}" th:errors="*{bookImage}" class="alert alert-danger"></div>
             </div>
-            <div class="row mt-4">
-                <div class="col d-flex justify-content-center">
-                    <button type="submit" name="submit" class="btn btn-primary base_button px-4 py-2 mb-5">Save</button>
-                </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 form-group">
+                <label class="mt-2 heading_font font_sub_heading_color">Description</label>
+                <textarea type="text" rows="4" id="content" placeholder="Content" class="form-control" th:field="*{descriptionOfBook}" autocomplete="off"></textarea>
+                <div th:if="${#fields.hasErrors('descriptionOfBook')}" th:errors="*{descriptionOfBook}" class="alert alert-danger"></div>
             </div>
-        </form>
-    </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col d-flex justify-content-center">
+                <button type="submit" name="submit" class="btn btn-primary base_button px-4 py-2 mb-5">Save</button>
+            </div>
+        </div>
+    </form>
 </div>
+
 
 <script type="text/javascript" th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script type="text/javascript" th:src="@{/webjars/popper.js/umd/popper.min.js}"></script>
