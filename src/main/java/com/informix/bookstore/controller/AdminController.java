@@ -21,6 +21,7 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 
 @Controller
 @RequestMapping("/admin")
@@ -57,7 +58,9 @@ public class AdminController {
     }
 
     @GetMapping("/books")
-    public String books(){
+    public String books(Model model){
+        List<BookPostActivity> books = bookPostActivityService.getAllBooks();
+        model.addAttribute("books", books);
         return "books";
     }
 
@@ -106,6 +109,12 @@ public class AdminController {
         model.addAttribute("bookPostActivity", bookPostActivity);
         model.addAttribute("user", usersService.getCurrentUserProfile());
         return "add-books";
+    }
+    @GetMapping("/books/{id}")
+    public String viewBookDetail(@PathVariable("id") int id, Model model) {
+        Optional<BookPostActivity> bookPostActivity = bookPostActivityService.findById(id);
+        model.addAttribute("book", bookPostActivity);
+        return "book";
     }
 
 }

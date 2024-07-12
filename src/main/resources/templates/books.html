@@ -1,10 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <title>Books</title>
+    <meta charset="utf-8">
+    <title th:text="${pageTitle}">Admin Page</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="Free HTML Templates" name="keywords">
+    <meta content="Free HTML Templates" name="description">
+
+    <!-- Favicon -->
+    <link th:href="@{/img/favicon.ico}" rel="icon">
+
+    <!-- Google Web Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+
+    <!-- Libraries Stylesheet -->
+    <link th:href="@{/lib/owlcarousel/assets/owl.carousel.min.css}" rel="stylesheet">
+
+    <!-- Customized Bootstrap Stylesheet -->
+    <link th:href="@{/css/style.css}" rel="stylesheet">
 </head>
+
 <body>
+<!-- Books Start -->
+<div class="container-fluid py-5" >
+    <div class="container py-5">
+        <div class="text-center mb-5">
+            <h5 class="text-primary text-uppercase mb-3" style="letter-spacing: 5px;">Books</h5>
+            <h1>Our Popular Books</h1>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 col-md-6 mb-4" th:each="book : ${books}">
+                <div class="rounded overflow-hidden mb-2">
+                    <img class="img-fluid" th:src="@{${book.getBookImagePath()}}" alt="">
+                    <div class="bg-secondary p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                            <small class="m-0"><i class="fa fa-user text-primary mr-2"></i>Posted By: <span th:text="${book.postedById.getUserId()}"></span></small>
+                            <small class="m-0"><i class="far fa-clock text-primary mr-2"></i>Posted On: <span th:text="${#dates.format(book.postedDate, 'dd-MM-yyyy')}"></span></small>
+                        </div>
+                        <a class="h5" href="" th:text="${book.bookTitle}">Book Title</a>
+                        <div class="border-top mt-4 pt-4">
+                            <div class="d-flex justify-content-between">
+                                <h6 class="m-0"><i class="fa fa-tag text-primary mr-2"></i>Genre: <span th:text="${book.genre}"></span></h6>
+                                <h5 class="m-0">$<span th:text="${book.price}"></span></h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Books End -->
 
 </body>
 </html>
