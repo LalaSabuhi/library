@@ -4,6 +4,7 @@ import com.informix.bookstore.entity.BookPostActivity;
 import com.informix.bookstore.repository.BookPostActivityRepository;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,5 +30,9 @@ public class BookPostActivityService {
 
     public Optional<BookPostActivity> findById(int id) {
         return bookPostActivityRepository.findById(id);
+    }
+
+    public List<BookPostActivity> searchBooks(String title, LocalDate startDate, LocalDate endDate, String genre) {
+        return bookPostActivityRepository.findBooks(title, startDate, endDate, genre);
     }
 }

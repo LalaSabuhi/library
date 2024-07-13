@@ -163,6 +163,47 @@
 </div>
 <!-- Navbar End -->
 
+<form action="#" th:action="@{/dashboard/}" method="get">
+    <div class="form-group">
+        <label for="title">Book Title</label>
+        <input type="text" id="title" name="title" placeholder="Book Title" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label for="author">Author</label>
+        <input type="text" id="author" name="author" placeholder="Author" class="form-control"/>
+    </div>
+
+    <div class="form-group">
+        <label for="genre">Genre</label>
+        <select id="genre" name="genre" class="form-control">
+            <option value="">Book Genre</option>
+            <option value="Fiction">Fiction</option>
+            <option value="Non-Fiction">Non-Fiction</option>
+            <option value="Science-Fiction">Science-Fiction</option>
+            <option value="Fantasy">Fantasy</option>
+            <option value="Mystery">Mystery</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Date Range</label>
+        <div>
+            <input type="radio" id="today" name="dateRange" value="today">
+            <label for="today">Today</label>
+        </div>
+        <div>
+            <input type="radio" id="days7" name="dateRange" value="days7">
+            <label for="days7">Last 7 Days</label>
+        </div>
+        <div>
+            <input type="radio" id="days30" name="dateRange" value="days30">
+            <label for="days30">Last 30 Days</label>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Search</button>
+</form>
 
 
 <!-- Carousel Start -->

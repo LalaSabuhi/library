@@ -6,4 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface BorrowerProfileRepository extends JpaRepository<BorrowerProfile, Integer> {
+
 }
